@@ -75,8 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("Authentication");
         http
         .authorizeRequests()
-        .antMatchers("/").permitAll()
-        .antMatchers("/login").permitAll()
+        .antMatchers("/","/signUp","/login").permitAll()
         .anyRequest().authenticated()
         .and().csrf().disable()
         .formLogin()

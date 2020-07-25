@@ -30,11 +30,6 @@ public class GroceryController {
 		return "grocery.loginPage";
 	}
 	
-	/*@RequestMapping(value = "/login", method = RequestMethod.POST)
-	String login1() {
-		System.out.println("Login page1");
-		return "grocery.homePage";
-	}*/
 	
 	@RequestMapping("/signUp")
 	String signUp() {
