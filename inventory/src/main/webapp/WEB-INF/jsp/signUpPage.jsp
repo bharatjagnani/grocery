@@ -16,7 +16,7 @@
 </script> <!-- Latest compiled JavaScript --> <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="/css/loginPageCss.css">
+<link rel="stylesheet" href="/css/GroceryCss.css">
 </head>
 <body
 	style="background-image: url('/images/Grocery-background.jpg'); background-size: cover;">

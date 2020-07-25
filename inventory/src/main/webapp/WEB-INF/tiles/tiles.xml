@@ -6,7 +6,7 @@
 <tiles-definitions>
 	<definition name="grocery.homePage" template="/WEB-INF/jsp/homePage.jsp">		
 	</definition>
-	<definition name="grocery.loginPage" template="/WEB-INF/jsp/loginPage.jsp">		
+	<definition name="grocery.loginPage" template="/WEB-INF/jsp/login.jsp">		
 	</definition>
 	<definition name="grocery.signUpPage" template="/WEB-INF/jsp/signUpPage.jsp">		
 	</definition>

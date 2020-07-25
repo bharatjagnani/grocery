@@ -7,6 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,10 +24,10 @@ import com.grocery.service.impl.CustomUserDetialsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	 @Autowired
-	 CustomUserDetialsService userDetailsService;
+	private CustomUserDetialsService userDetailsService;
 	 
-	 @Autowired
-	 public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+	 @Override
+	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	  /* auth.jdbcAuthentication().dataSource(dataSource)
 	  .usersByUsernameQuery(
 	   "select first_name from users where user_id=?")
@@ -72,19 +73,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .permitAll();*/
         System.out.println("Authentication");
-        http.authorizeRequests()
+        http
+        .authorizeRequests()
+        .antMatchers("/").permitAll()
         .antMatchers("/login").permitAll()
-        .antMatchers("/","/home","/grocery/**").access("hasRole('ROLE_ADMIN')")
         .anyRequest().authenticated()
-        .and()
-          .formLogin().loginPage("/login")
-          .usernameParameter("username").passwordParameter("password")
+        .and().csrf().disable()
+        .formLogin()
+        .loginPage("/login")
+        .loginPage("/")
+        .defaultSuccessUrl("/home")
+        .usernameParameter("username")
+        .passwordParameter("password")
         .and()
           .logout().logoutSuccessUrl("/logout") 
          .and()
-         .exceptionHandling().accessDeniedPage("/403")
-        .and()
-          .csrf();
+         .exceptionHandling().accessDeniedPage("/403");
     }
    /* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -93,5 +97,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("bharat").password("12345").roles("ROLE_ADMIN");
         
     }*/
+    
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+    }
  
 }

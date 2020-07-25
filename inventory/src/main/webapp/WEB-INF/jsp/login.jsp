@@ -27,8 +27,8 @@
 			<img id="profile-img" class="profile-img-card"
 				src="/images/avatar_2x.png" />
 			<p id="profile-name" class="profile-name-card"></p>
-			<form action="/home" method="post" class="form-signin">
-				<span id="username1" class="username"></span> 
+			<form action="/login" method="post" class="form-signin">
+				
 				<input type="text" id="username" name="username" class="form-control" placeholder="<spring:message code="label.userid"/>" required autofocus> 
 				<input type="password" id="password" name="password" class="form-control" placeholder="<spring:message code="label.password"/>" required>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

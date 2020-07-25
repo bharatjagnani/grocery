@@ -10,8 +10,8 @@
     <body>
         <h1><spring:message code="label.welcome"/></h1>
         <div align="right">
-				<a href="/?lang=EN" class="text-right"><spring:message code="label.languagEnglish"/></a><br/>
-				<a href="/?lang=hi" class="text-right"><spring:message code="label.languageHindi"/></a>
+				<a href="/grocery/home/?lang=EN" class="text-right"><spring:message code="label.languagEnglish"/></a><br/>
+				<a href="/grocery/home/?lang=hi" class="text-right"><spring:message code="label.languageHindi"/></a>
 			</div>
     </body>
 </html>
